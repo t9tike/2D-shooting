@@ -13,18 +13,12 @@ using NPOI.SS.Formula.Functions;
 
 namespace Perkelesimu
 {
-    
     class Enemies 
     {
-        //Random randNum2 = new Random();
-
         public List<PictureBox> zombiesList2 = new List<PictureBox>();
-
-
         public void MakeZombies(Form pForm)
         {
             formPelialue form1 = new formPelialue();
-
             PictureBox pictureBoxZombie = new PictureBox();
             pictureBoxZombie.Tag = "zombie2";
             pictureBoxZombie.Image = Properties.Resources.zup_1_png;
@@ -33,14 +27,6 @@ namespace Perkelesimu
             pictureBoxZombie.SizeMode = PictureBoxSizeMode.AutoSize;
             zombiesList2.Add(pictureBoxZombie);
             pForm.Controls.Add(pictureBoxZombie);
-     
-            //form1.pictureBoxPlayer.BringToFront();
-            //pictureBoxZombie.BringToFront();
-
-
-
         }
-    }
-
-    
+    }   
 }
