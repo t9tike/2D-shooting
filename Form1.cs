@@ -7,17 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.Media;
 using System.Windows.Media;
 using NPOI.SS.Formula.Functions;
-//using System.Windows.Media;
-
 
 namespace Perkelesimu
 { 
-    
-    
     public partial class formPelialue : Form
     {
         public bool goLeft, goRight, goUp, goDown, gameOver;
@@ -29,31 +24,23 @@ namespace Perkelesimu
         public static int score;
         public int sprintAmount = 99;
         public bool healthpackMaassa = false;
-      
         public static int shootCount = 0;
         public static bool superAmmo = false;
-
         public Random randNum = new Random();
         Enemies enemiesZombi2 = new Enemies();
-
         public bool tauko = false;
-
         public List<PictureBox> zombiesList = new List<PictureBox>();
 
-        SoundPlayer haulikko = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\dsshotgn.wav");
-        SoundPlayer raketinheitin = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\raketinheitin.wav");
+        SoundPlayer haulikko = new SoundPlayer(@"***");
+        SoundPlayer raketinheitin = new SoundPlayer(@"***");
+        SoundPlayer kuolinaani = new SoundPlayer(@"***");
+        SoundPlayer zombinkuolinaani = new SoundPlayer(@"***");
+        SoundPlayer zombinkuolinaani2 = new SoundPlayer(@"***");
+        SoundPlayer tavaranpoiminta = new SoundPlayer(@"***");
+        SoundPlayer panoksinepoiminta = new SoundPlayer(@"***");
 
-        SoundPlayer kuolinaani = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\Kuoli.wav");
-        SoundPlayer zombinkuolinaani = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\Zombinkuolinaani.wav");
-        SoundPlayer zombinkuolinaani2 = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\Zombinkuolinaani2.wav");
+        //SoundPlayer victoryMusic = new SoundPlayer(@"***");
 
-        SoundPlayer tavaranpoiminta = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\tavaranpoiminta.wav");
-        SoundPlayer panoksinepoiminta = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\ammopickup.wav");
-
-        //SoundPlayer victoryMusic = new SoundPlayer(@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\victorymusic.wav");
-
-        //public static WMPLib.WindowsMediaPlayer mplayerHaulikko = new WMPLib.WindowsMediaPlayer();
-        //public static WMPLib.WindowsMediaPlayer mplayerHaulikko2 = new WMPLib.WindowsMediaPlayer();
         Records records = new Records();
 
         public formPelialue()
@@ -61,11 +48,12 @@ namespace Perkelesimu
             InitializeComponent();
             RestartGame();
             //axWindowsMediaPlayerVictory.URL =  (@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\victorymusic.wav");
-            //labelShowRecord.Text = records.record.ToString();
             records.readRecord();
             labelShowRecord.Text = Records.ennatys.ToString();
         }
-
+        
+        // luodaan pelikello ja sen tapahtumat
+        
         private void MainTimerEvent(object sender, EventArgs e)
         {
             if (playerHealth <0)
@@ -77,7 +65,6 @@ namespace Perkelesimu
                 //victoryMusic.Stop();
             }
             
-            //progressBarSprint.Maximum = sprintAmount;
             if (sprintAmount < 100 && sprintAmount > 0)
             {
                 progressBarSprint.Value = sprintAmount;
@@ -166,15 +153,6 @@ namespace Perkelesimu
 
                     }
 
-                    if (x.Bounds.IntersectsWith(x.Bounds) && x.Tag == "zombie")
-                    {
-                        
-                        
-                        // tee tänne jotain
-                        //x.Left += zombieSpeed;
-                    }
-
-
                     if (x.Left > pictureBoxPlayer.Left)
                     {
                         x.Left -= zombieSpeed;
@@ -207,7 +185,6 @@ namespace Perkelesimu
                         ((PictureBox)x).Dispose();
                         zombiesList.Remove(((PictureBox)x));
                         MakeZombies();
-
                     }
 
                     if (x.Left > pictureBoxPlayer.Left)
@@ -274,14 +251,12 @@ namespace Perkelesimu
                             }
                             else if (score == 30)
                             {
-                               
                                 MakeZombies();
                                 //enemiesZombi2.MakeZombies(this);
                                 //zombieSpeed = 6;
                             }
                             else if (score == 40)
-                            {
-                               
+                            {                              
                                 MakeZombies();
                                 //enemiesZombi2.MakeZombies(this);
                                 //zombieSpeed = 7;
@@ -290,49 +265,42 @@ namespace Perkelesimu
                             {
                                 //axWindowsMediaPlayerVictory.Ctlcontrols.play();
                                 //timerGameTimer.Stop();
-                                //MessageBox.Show("Voitit pelin jee");
                                 //RestartGame();
                                 MakeZombies();
-
                             }
                             else if (score == 60)
                             {
-
                                 MakeZombies();
                                 //enemiesZombi2.MakeZombies(this);
                                 //zombieSpeed = 5;
                             }
                             else if (score == 70)
                             {
-
                                 MakeZombies();
                                 //enemiesZombi2.MakeZombies(this);
                                 //zombieSpeed = 6;
                             }
                             else if (score == 80)
                             {
-
                                 MakeZombies();
                                 //enemiesZombi2.MakeZombies(this);
                                 //zombieSpeed = 7;
                             }
                             else if (score == 90)
                             {
-
                                 MakeZombies();
                                 //enemiesZombi2.MakeZombies(this);
                                 //zombieSpeed = 6;
                             }
                             else if (score == 100)
                             {
-
                                 timerGameTimer.Stop();
                                 MessageBox.Show("Voitit pelin jee");
                                 RestartGame();
                                 //records.saveRecord();
                             }
 
-                            //arvotaan soitetaanko zombi ääni
+                            //arvotaan soitetaanko zombin kuolinääni
                             int soitetaankoZombi = randNum.Next(1, 7);
 
                             if (soitetaankoZombi == 1)
@@ -414,17 +382,9 @@ namespace Perkelesimu
                         {
                             haulikko.Play();
                             superAmmo = false;
-                        }
-
-
-                        
-                        //mplayerHaulikko.controls.play();
-                        //axWindowsMediaPlayerHaulikko.Ctlcontrols.play();
-                        //soitetaankoMika = false;
-                        Console.WriteLine("haulikko1");
+                        }           
                     }
-                }
-                
+                }               
             }
 
         private void taukoPaikalla()
@@ -435,8 +395,7 @@ namespace Perkelesimu
                 panelTauko.Show();
                 Console.WriteLine("tauko");
                 panelTauko.BringToFront();
-                Valikko.wplayer.controls.play();
-                
+                Valikko.wplayer.controls.play();                
             }
         }
 
@@ -558,9 +517,6 @@ namespace Perkelesimu
                 this.Controls.Add(pictureBoxZombie);
                 pictureBoxPlayer.BringToFront();
                 pictureBoxZombie.BringToFront();
-            
-            
-           
         }
 
         private void DropAmmo()
