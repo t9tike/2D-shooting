@@ -47,7 +47,7 @@ namespace Perkelesimu
         {
             InitializeComponent();
             RestartGame();
-            //axWindowsMediaPlayerVictory.URL =  (@"C:\Users\keijo\Desktop\Windows ohjelmointi\Harjoittelua\Perkelesimu\victorymusic.wav");
+            //axWindowsMediaPlayerVictory.URL =  (@"***");
             records.readRecord();
             labelShowRecord.Text = Records.ennatys.ToString();
         }
