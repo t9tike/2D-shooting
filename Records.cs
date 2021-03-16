@@ -13,7 +13,7 @@ namespace Perkelesimu
     class Records
     {
         public int record = formPelialue.score;
-        string path = "C:\\Users\\keijo\\Desktop\\Windows ohjelmointi\\Harjoittelua\\Perkelesimu\\Perkelesimu\\Resources\\Save.txt";
+        string path = "***\\Save.txt";
         public static int ennatys;
         
         
@@ -26,8 +26,7 @@ namespace Perkelesimu
             }
             catch (Exception)
             {
-                Console.WriteLine("Kaatu koko paska");
-                
+                Console.WriteLine("Kaatu koko paska");                
             }
         }
 
@@ -41,24 +40,6 @@ namespace Perkelesimu
             {
                 Console.WriteLine("Kaatu koko paska");
             }
-            //var lines = File.ReadAllLines(path);      // luetaan kaikki rivit tiedostosta
-            //foreach (var line in lines)               // käydään läpi kaikki rivit
-            //{
-            //    Console.WriteLine("\t" + line);       // tulostetaan kaikki rivit
-            //}
-
-            Console.WriteLine(ennatys);
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }
